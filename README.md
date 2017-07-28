@@ -26,4 +26,4 @@ sudoko.cpp :- This cpp code can solve a sudoko puzzle.
 
 suduko.py :- This python code can create a perfect 9*9 suduko grid (This code is outdated).
 
-   
+learn.py :- This python code asks for an input string from the user and then generates a random string of the same length and modifies the random string through several generations so that it matches the input string at some generation.
