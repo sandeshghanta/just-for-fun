@@ -3,6 +3,7 @@ import json
 import ftplib
 import urllib2
 import requests
+import argparse
 from subprocess import call
 from bs4 import BeautifulSoup
 from time import gmtime,strftime
@@ -25,6 +26,13 @@ def checkfile(day,time,hour):
     return True
 def check(videos,time,hour):
     day = strftime("%d", gmtime())
+    for i in videos:
+        if (i.find(day) != -1 and i.find(time) != -1 and i.find(hour) != -1):
+            if (checkfile(day,time,hour)):
+                endlink = extract(i)
+                return endlink
+    if (day[0] == '0'):
+	day = day[1]
     for i in videos:
         if (i.find(day) != -1 and i.find(time) != -1 and i.find(hour) != -1):
             if (checkfile(day,time,hour)):
@@ -56,20 +64,26 @@ def youtube_search(options,time,hour):
     elif search_result["id"]["kind"] == "youtube#playlist":
       playlists.append("%s (%s)" % (search_result["snippet"]["title"],
                                     search_result["id"]["playlistId"]))
-  #print "Videos:\n", "\n".join(videos), "\n"
-  #print "Channels:\n", "\n".join(channels), "\n"
-  #print "Playlists:\n", "\n".join(playlists), "\n"
+#  print "Videos:\n", "\n".join(videos), "\n"
+#  print "Channels:\n", "\n".join(channels), "\n"
+#  print "Playlists:\n", "\n".join(playlists), "\n"
   endlink = check(videos,time,hour)
   print endlink
   if (endlink != False):
       command = """youtube-dl -o "audios/%(title)s.%(ext)s" -x --audio-format mp3 https://www.youtube.com/watch?v="""+endlink
       os.system(command)
       print hour + ' ' + time + " Audio Downloaded"
-argparser.add_argument("--q", help="Search term", default="etv 7 am news today")
+day = strftime("%d", gmtime())
+month = "October"
+argparser = argparse.ArgumentParser()
+argparser.add_argument("--q", help="Search term", default="7 AM ETV Telugu News | "+ day + " " + month + " 2017")
 argparser.add_argument("--max-results", help="Max results", default=25)
 args = argparser.parse_args()
 youtube_search(args,"AM","7")
+argparser = argparse.ArgumentParser()
+argparser.add_argument("--q", help="Search term", default="9 PM ETV Telugu News | "+ day + " " + month + " 2017")
+argparser.add_argument("--max-results", help="Max results", default=25)
+args = argparser.parse_args()
 youtube_search(args,"PM","9")
-
     
 
