@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>Reader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="angular/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-controller="MainCtrl" style="background-color: #000; background-repeat: no-repeat;">
+    
+    <ng-view></ng-view>
+
+    <script src="angular/jquery/jquery.min.js"></script>
+    <script src="angular/materialize/js/materialize.min.js"></script>
+    <script src="angular/angular.min.js"></script> 
+    <script src="angular/angular-route.min.js"></script>
+    <!-- Compiled and minified CSS -->
+
+    <!-- Compiled and minified JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+    <script src="app.js"></script>
+    <script>
+        $(".button-collapse").sideNav();
+    </script>
+</body>
+
+</html>
