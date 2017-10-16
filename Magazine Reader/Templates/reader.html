@@ -1,0 +1,13 @@
+<a  class="btn-floating btn-large waves-effect waves-light red " style="position:fixed" href="#!/dashboard"><i class="material-icons">menu</i></a>
+<div class="container">
+    <div class="section">
+        <a class="btn-floating btn-large waves-effect waves-light tool-btn-left" ng-show="currentPage > 0" style="float:left" ng-click="previousPage()"><i class="material-icons left">arrow_back</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light tool-btn-right" ng-show="currentPage < currentBook.data.length - 1" style="float:right" ng-click="nextPage()"><i class="material-icons right">arrow_forward</i></a>
+        <br>
+        <br>
+    </div>
+    <div class="section">
+        <center><a style="text-decoration: none; color:white">{{currentPage + 1}}/{{currentBook.data.length}}</a></center>
+        <center><img id="page" ng-src="{{currentBook.data[currentPage]}}"></center>
+    </div>
+</div>
