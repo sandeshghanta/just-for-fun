@@ -1,4 +1,4 @@
-
+import turtle
 wn = turtle.Screen()
 tu = turtle.Turtle()
 tu1 = turtle.Turtle()
