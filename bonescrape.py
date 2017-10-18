@@ -1,4 +1,4 @@
-
+import requests
 for i in range(1,144):
     link = 'http://www.readcomics.tv/images/manga/bone/1/%s.jpg'%(i)
     data = requests.get(link)
