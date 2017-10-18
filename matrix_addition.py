@@ -1,4 +1,4 @@
-
+import random
 matrix1 = []
 matrix2 = []
 result = []
