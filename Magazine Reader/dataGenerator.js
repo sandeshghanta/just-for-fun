@@ -14,14 +14,16 @@ var data = {};
 
 var comics = fs.readdirSync(dir);
 comics.forEach(function(comic){
-    var folder = dir + '/' + comic;
-    console.log(folder);
+    // var folder = dir + '\\' + comic; //Windows
+    var folder = dir + '/' + comic; // Rest of the world
     if(fs.statSync(folder).isDirectory()){
         data[comic] = fs.readdirSync(folder);
         data[comic].forEach(function(file,i){
             var folder = dir + '/' + encodeURIComponent(comic);
-            data[comic][i] = folder + '/' + data[comic][i];
+            var number = i+1;
+            data[comic][i] = folder + '/' + number + '.jpg'
         });
+        console.log(comic);
     }
 });
 
