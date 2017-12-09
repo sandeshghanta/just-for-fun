@@ -25,6 +25,7 @@ app.controller('MainCtrl', function ($scope, $http,  $location) {
 
         $scope.currentBook = $scope.books[0];
         $scope.currentPage = 0;
+        $scope.page = $scope.currenPage + 1;
 
     });
 
@@ -49,6 +50,8 @@ app.controller('MainCtrl', function ($scope, $http,  $location) {
     $scope.nextPage = function(){
         if($scope.currentPage + 1 < $scope.currentBook.data.length){
             $scope.currentPage++;
+            document.body.scrollTop = 0; // For Chrome, Safari and Opera
+            document.documentElement.scrollTop = 0; // For IE and Firefox
             Materialize.fadeInImage('#page')
         }
         else{
@@ -60,7 +63,9 @@ app.controller('MainCtrl', function ($scope, $http,  $location) {
     $scope.previousPage = function(){
         if($scope.currentPage - 1 >= 0){
             $scope.currentPage--;
-            Materialize.fadeInImage('#page')            
+            document.body.scrollTop = 0; // For Chrome, Safari and Opera
+            document.documentElement.scrollTop = 0; // For IE and Firefox
+            // Materialize.fadeInImage('#page')            
         }
     }
 
